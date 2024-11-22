@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib.colors as mcolors
-this is a test
+
 # Set grid size, number of steps, and initial densities
 grid_size = 50
 steps = 100
