@@ -9,7 +9,36 @@ The main features include:
 ---
 
 ### **1. Initial Setup**  
-In the initial setup, it defines key parameters such as: grid size (the size of the area/environment where each organism resides), the number of steps (the number of actions organisms take), the initial populations of plants, herbivores, and carnivores, the hunger period for each, and the probability of disasters.  
+In the initial setup, it defines key parameters such as: grid size (the size of the area/environment where each organism resides), the number of steps (the number of actions organisms take), the initial populations of plants, herbivores, and carnivores, the hunger period for each, and the probability of disasters.
+
+For Example:
+```python
+def set_parameters():
+    params = {
+        "grid_size": 100,                # Grid size: 100x100 cells
+        "steps": 200,                    # Total simulation steps
+        "initial_grass1_density": 0.2,   # Initial density of Grass1
+        "initial_grass2_density": 0.5,   # Initial density of Grass2
+        "initial_grass3_density": 0.8,   # Initial density of Grass3
+        "initial_herbivore1_density": 0.1, # Herbivore1 density
+        "initial_herbivore2_density": 0.3, # Herbivore2 density
+        "initial_herbivore3_density": 0.6, # Herbivore3 density
+        "initial_carnivore1_density": 0.1, # Carnivore1 density
+        "initial_carnivore2_density": 0.2, # Carnivore2 density
+        "initial_carnivore3_density": 0.3, # Carnivore3 density
+        "herbivore1_max_hunger": 10,     # Hunger threshold for Herbivore1
+        "herbivore2_max_hunger": 15,     # Hunger threshold for Herbivore2
+        "herbivore3_max_hunger": 20,     # Hunger threshold for Herbivore3
+        "carnivore1_max_hunger": 2,      # Hunger threshold for Carnivore1
+        "carnivore2_max_hunger": 3,      # Hunger threshold for Carnivore2
+        "carnivore3_max_hunger": 4,      # Hunger threshold for Carnivore3
+        "disaster_duration": 5,          # Duration of disasters
+        "disaster_probability": 0.01,    # Probability of disasters per step
+    }
+    return params
+```
+
+##**Grid Initialization**  
 For example:  
 ```python
 grid[:, :, 0] = np.random.choice(
@@ -18,10 +47,13 @@ grid[:, :, 0] = np.random.choice(
 ```
 This algorithm creates layers within the grid, placing "plants (1)" in the 0th layer.  
 - `{0, 1}` indicates whether a plant is absent (0) or present (1).  
-- `p` represents the distribution of 0 and 1 for "plants (1)".  
-- `size` specifies the range where "plants (1)" are arranged.  
+- `p` represents the probability distribution of 0 and 1 for "plants (1), based on the defined parameters".  
+- `size` specifies the range where "plants (1)" are arranged (Grid Dimension).  
 
-In this way, the grid is divided into nine layers, and organisms are placed in each layer.
+In this way, the grid is divided into nine layers, and organisms are placed in each layer:
+Layer 0-2 : Grass
+Layer 3-5 : Herbivores
+Layer 6-8 : Carnivores
 
 ---
 
