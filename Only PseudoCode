@@ -11,6 +11,17 @@ Create a 3D grid with 10 layers, where each layer represents:
 Initialize grids for hunger tracking for herbivores and carnivores.
 Randomly populate the grid based on initial densities.
 
+```Py
+def count_neighbors(grid, x, y, layer):
+    count = 0
+    for i in range(x - 1, x + 2):
+        for j in range(y - 1, y + 2):
+            if (i == x and j == y) or i < 0 or j < 0 or i >= grid_size or j >= grid_size:
+                continue
+            if grid[i, j, layer] == 1:
+                count += 1
+    return count
+```
 Function count_neighbors(grid, x, y, layer):
     Count the number of neighboring cells in a specific layer that are occupied.
     Skip out-of-bound cells and the current cell itself.
