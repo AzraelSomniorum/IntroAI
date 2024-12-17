@@ -70,13 +70,18 @@ disaster_probability = params["disaster_probability"]
 ```
 
 ---
-hahahaha
+The simulation environment is represented as a 3D grid with dimensions (grid_size, grid_size, 10):
+- The first two dimensions (grid_size x grid_size) represent the 2D space.
+- The third dimension (10 layers) represents different entities:
+    - Layers 0–2: Grass1, Grass2, Grass3
+    - Layers 3–5: Herbivore1, Herbivore2, Herbivore3
+    - Layers 6–8: Carnivore1, Carnivore2, Carnivore3
 For Example:
 ```python
 grid = np.zeros((grid_size, grid_size, 10), dtype=int)
 ```
 
-##**Hunger Tracking**
+#### **Hunger Tracking**
 Separate 2D hunger grids are initialized to track the hunger levels of herbivores and carnivores. These grids are the same size as the simulation grid (grid_size x grid_size) but only hold hunger values:
 - If a carnivore/herbivore eats food, its hunger resets to 0.
 - If it does not eat within its hunger limit, it dies.
@@ -92,7 +97,7 @@ carnivore2_hunger = np.zeros((grid_size, grid_size), dtype=int)
 carnivore3_hunger = np.zeros((grid_size, grid_size), dtype=int)
 ```
 
-##**Disaster Counter**
+#### **Disaster Counter**
 The disaster_counter tracks the duration of natural disasters (e.g., fires or droughts) that temporarily prevent grass from growing. Initially, no disaster is active, so it starts at 0.
 - If a disaster occurs, disaster_counter is set to the disaster duration and decreases step-by-step until the disaster ends.
 For Example:
@@ -101,7 +106,7 @@ disaster_counter = 0
 ```
 
 ---
-##**Grid Initialization**  
+#### **Grid Initialization**  
 For example:  
 ```python
 grid[:, :, 0] = np.random.choice(
