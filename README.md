@@ -39,6 +39,7 @@ def set_parameters():
 ```
 
 Once the parameters are defined using the set_parameters() function, they are extracted into individual variables for easier access throughout the program.
+
 For Example:
 ```python
 params = set_parameters()
