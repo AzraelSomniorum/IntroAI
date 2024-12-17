@@ -37,6 +37,64 @@ def set_parameters():
     }
     return params
 ```
+Once the parameters are defined using the set_parameters() function, they are extracted into individual variables for easier access throughout the program.
+For Example:
+```python
+params = set_parameters()
+
+grid_size = params["grid_size"]
+steps = params["steps"]
+initial_grass1_density = params["initial_grass1_density"]
+initial_grass2_density = params["initial_grass2_density"]
+initial_grass3_density = params["initial_grass3_density"]
+
+initial_herbivore1_density = params["initial_herbivore1_density"]
+initial_herbivore2_density = params["initial_herbivore2_density"]
+initial_herbivore3_density = params["initial_herbivore3_density"]
+
+initial_carnivore1_density = params["initial_carnivore1_density"]
+initial_carnivore2_density = params["initial_carnivore2_density"]
+initial_carnivore3_density = params["initial_carnivore3_density"]
+
+herbivore1_max_hunger = params["herbivore1_max_hunger"]
+herbivore2_max_hunger = params["herbivore2_max_hunger"]
+herbivore3_max_hunger = params["herbivore3_max_hunger"]
+
+carnivore1_max_hunger = params["carnivore1_max_hunger"]
+carnivore2_max_hunger = params["carnivore2_max_hunger"]
+carnivore3_max_hunger = params["carnivore3_max_hunger"]
+
+disaster_duration = params["disaster_duration"]
+disaster_probability = params["disaster_probability"]
+```
+
+hahahaha
+For Example:
+```python
+grid = np.zeros((grid_size, grid_size, 10), dtype=int)
+```
+
+Separate 2D hunger grids are initialized to track the hunger levels of herbivores and carnivores. These grids are the same size as the simulation grid (grid_size x grid_size) but only hold hunger values:
+- If a carnivore/herbivore eats food, its hunger resets to 0.
+- If it does not eat within its hunger limit, it dies.
+- ```np.zeros```: Initializes all hunger values to 0.
+- Values increase step-by-step if organisms don’t find food.
+For Example:
+```python
+herbivore1_hunger = np.zeros((grid_size, grid_size), dtype=int)
+herbivore2_hunger = np.zeros((grid_size, grid_size), dtype=int)
+herbivore3_hunger = np.zeros((grid_size, grid_size), dtype=int)
+carnivore1_hunger = np.zeros((grid_size, grid_size), dtype=int)
+carnivore2_hunger = np.zeros((grid_size, grid_size), dtype=int)
+carnivore3_hunger = np.zeros((grid_size, grid_size), dtype=int)
+```
+
+The disaster_counter tracks the duration of natural disasters (e.g., fires or droughts) that temporarily prevent grass from growing. Initially, no disaster is active, so it starts at 0.
+- If a disaster occurs, disaster_counter is set to the disaster duration and decreases step-by-step until the disaster ends.
+For Example:
+```python
+disaster_counter = 0
+```
 
 ##**Grid Initialization**  
 For example:  
