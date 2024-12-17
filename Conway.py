@@ -189,6 +189,111 @@ def update(grid, herbivore1_hunger, herbivore2_hunger, herbivore3_hunger, carniv
                     if count_neighbors(grid, i, j, 3) == 2 or count_neighbors(grid, i, j, 3) == 3:
                         new_grid[i, j, 3] = 1
 
+            # Herbivore2
+            if grid[i, j, 4] == 1:
+                i, j = random_move(new_grid, i, j, 4)
+
+                if count_neighbors(new_grid, i, j, 0) >= 1 or count_neighbors(new_grid, i, j, 1) >= 1 or count_neighbors(new_grid, i, j, 2) >= 1:
+                    new_grid[i, j, 4] = 1
+                    new_herbivore2_hunger[i, j] = 0
+                else:
+                    new_herbivore2_hunger[i, j] += 1
+                    if new_herbivore2_hunger[i, j] >= herbivore2_max_hunger:
+                        new_grid[i, j, 4] = 0
+                if count_neighbors(new_grid, i, j, 4) > 3:
+                    new_grid[i, j, 4] = 0
+                if count_neighbors(new_grid, i, j, 4) < 2:
+                    new_grid[i, j, 4] = 0
+                if count_neighbors(new_grid, i, j, 4) == 2 or count_neighbors(new_grid, i, j, 4) == 3:
+                    new_grid[i, j, 4] = 1
+            elif grid[i, j, 4] == 0:
+                if grid[i, j, 1] == 1:
+                    if count_neighbors(grid, i, j, 4) == 2 or count_neighbors(grid, i, j, 4) == 3:
+                        new_grid[i, j, 4] = 1
+
+            # Herbivore3
+            if grid[i, j, 5] == 1:
+                i, j = random_move(new_grid, i, j, 5)
+
+                if count_neighbors(new_grid, i, j, 0) >= 1 or count_neighbors(new_grid, i, j, 1) >= 1 or count_neighbors(new_grid, i, j, 2) >= 1:
+                    new_grid[i, j, 5] = 1
+                    new_herbivore3_hunger[i, j] = 0
+                else:
+                    new_herbivore3_hunger[i, j] += 1
+                    if new_herbivore3_hunger[i, j] >= herbivore3_max_hunger:
+                        new_grid[i, j, 5] = 0
+                if count_neighbors(new_grid, i, j, 5) > 3:
+                    new_grid[i, j, 5] = 0
+                if count_neighbors(new_grid, i, j, 5) < 2:
+                    new_grid[i, j, 5] = 0
+                if count_neighbors(new_grid, i, j, 5) == 2 or count_neighbors(new_grid, i, j, 5) == 3:
+                    new_grid[i, j, 5] = 1
+            elif grid[i, j, 5] == 0:
+                if grid[i, j, 2] == 1:
+                    if count_neighbors(grid, i, j, 5) == 2 or count_neighbors(grid, i, j, 5) == 3:
+                        new_grid[i, j, 5] = 1
+
+            # Carnivore1
+            if grid[i, j, 6] == 1:
+                i, j = random_move(new_grid, i, j, 6)
+
+                if count_neighbors(new_grid, i, j, 3) >= 1 or count_neighbors(new_grid, i, j, 4) >= 1 or count_neighbors(new_grid, i, j, 5) >= 1:
+                    new_grid[i, j, 6] = 1
+                    new_carnivore1_hunger[i, j] = 0
+                else:
+                    new_carnivore1_hunger[i, j] += 1
+                    if new_carnivore1_hunger[i, j] >= carnivore1_max_hunger:
+                        new_grid[i, j, 6] = 0
+                if count_neighbors(new_grid, i, j, 6) > 3:
+                    new_grid[i, j, 6] = 0
+                if count_neighbors(new_grid, i, j, 6) == 3:
+                    new_grid[i, j, 6] = 1
+            elif grid[i, j, 6] == 0:
+                if grid[i, j, 3] == 1:
+                    if count_neighbors(grid, i, j, 6) == 2 or count_neighbors(grid, i, j, 6) == 3:
+                        new_grid[i, j, 6] = 1
+
+            # Carnivore2
+            if grid[i, j, 7] == 1:
+                i, j = random_move(new_grid, i, j, 7)
+
+                if count_neighbors(new_grid, i, j, 3) >= 1 or count_neighbors(new_grid, i, j, 4) >= 1 or count_neighbors(new_grid, i, j, 5) >= 1:
+                    new_grid[i, j, 7] = 1
+                    new_carnivore2_hunger[i, j] = 0
+                else:
+                    new_carnivore2_hunger[i, j] += 1
+                    if new_carnivore2_hunger[i, j] >= carnivore2_max_hunger:
+                        new_grid[i, j, 7] = 0
+                if count_neighbors(new_grid, i, j, 7) > 3:
+                    new_grid[i, j, 7] = 0
+                if count_neighbors(new_grid, i, j, 7) == 3:
+                    new_grid[i, j, 7] = 1
+            elif grid[i, j, 7] == 0:
+                if grid[i, j, 4] == 1:
+                    if count_neighbors(grid, i, j, 7) == 2 or count_neighbors(grid, i, j, 7) == 3:
+                        new_grid[i, j, 7] = 1
+
+            # Carnivore3
+            if grid[i, j, 8] == 1:
+                i, j = random_move(new_grid, i, j, 8)
+
+                if count_neighbors(new_grid, i, j, 3) >= 1 or count_neighbors(new_grid, i, j, 4) >= 1 or count_neighbors(new_grid, i, j, 5) >= 1:
+                    new_grid[i, j, 8] = 1
+                    new_carnivore3_hunger[i, j] = 0
+                else:
+                    new_carnivore3_hunger[i, j] += 1
+                    if new_carnivore3_hunger[i, j] >= carnivore3_max_hunger:
+                        new_grid[i, j, 8] = 0
+                if count_neighbors(new_grid, i, j, 8) > 3:
+                    new_grid[i, j, 8] = 0
+                if count_neighbors(new_grid, i, j, 8) == 3:
+                    new_grid[i, j, 8] = 1
+            elif grid[i, j, 8] == 0:
+                if grid[i, j, 5] == 1:
+                    if count_neighbors(grid, i, j, 8) == 2 or count_neighbors(grid, i, j, 8) == 3:
+                        new_grid[i, j, 8] = 1
+
+
     return new_grid, new_herbivore1_hunger, new_carnivore1_hunger, new_herbivore2_hunger, new_carnivore2_hunger, new_herbivore3_hunger, new_carnivore3_hunger, disaster_counter
 
 
