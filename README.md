@@ -11,7 +11,6 @@ The main features include:
 ### **1. Initial Setup**  
 In the initial setup, it defines key parameters such as: grid size (the size of the area/environment where each organism resides), the number of steps (the number of actions organisms take), the initial populations of plants, herbivores, and carnivores, the hunger period for each, and the probability of disasters.
 
-For Example:
 ```python
 def set_parameters():
     params = {
@@ -40,7 +39,6 @@ def set_parameters():
 
 Once the parameters are defined using the set_parameters() function, they are extracted into individual variables for easier access throughout the program.
 
-For Example:
 ```python
 params = set_parameters()
 
@@ -77,7 +75,7 @@ The simulation environment is represented as a 3D grid with dimensions (grid_siz
     - Layers 0–2: Grass1, Grass2, Grass3
     - Layers 3–5: Herbivore1, Herbivore2, Herbivore3
     - Layers 6–8: Carnivore1, Carnivore2, Carnivore3
-For Example:
+
 ```python
 grid = np.zeros((grid_size, grid_size, 10), dtype=int)
 ```
@@ -88,7 +86,7 @@ Separate 2D hunger grids are initialized to track the hunger levels of herbivore
 - If it does not eat within its hunger limit, it dies.
 - ```np.zeros```: Initializes all hunger values to 0.
 - Values increase step-by-step if organisms don’t find food.
-For Example:
+
 ```python
 herbivore1_hunger = np.zeros((grid_size, grid_size), dtype=int)
 herbivore2_hunger = np.zeros((grid_size, grid_size), dtype=int)
@@ -101,14 +99,14 @@ carnivore3_hunger = np.zeros((grid_size, grid_size), dtype=int)
 #### **Disaster Counter**
 The disaster_counter tracks the duration of natural disasters (e.g., fires or droughts) that temporarily prevent grass from growing. Initially, no disaster is active, so it starts at 0.
 - If a disaster occurs, disaster_counter is set to the disaster duration and decreases step-by-step until the disaster ends.
-For Example:
+
 ```python
 disaster_counter = 0
 ```
 
 ---
 #### **Grid Initialization**  
-For example:  
+
 ```python
 grid[:, :, 0] = np.random.choice(
     [0, 1], p=[1 - initial_grass1_density, initial_grass1_density], size=(grid_size, grid_size)
@@ -136,7 +134,7 @@ if (i == x and j == y) or i < 0 or j < 0 or i >= grid_size or j >= grid_size:
     continue
 ```
 
-For Example:
+Full Algorithm:
 ```python
 def count_neighbors(grid, x, y, layer):
     count = 0
