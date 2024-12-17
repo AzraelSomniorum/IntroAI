@@ -52,8 +52,8 @@ disaster_probability = params["disaster_probability"]
 ```
 
 Function set_parameters():
-    Define all parameters (grid size, initial densities, hunger limits, disaster settings)
-    Return parameters as a dictionary
+Define all parameters (grid size, initial densities, hunger limits, disaster settings)
+Return parameters as a dictionary
 
 ---
 ```python
@@ -98,10 +98,10 @@ grid[:, :, 8] = np.random.choice(
 ```
 
 Create a 3D grid with 10 layers, where each layer represents:
-    Layer 0-2: Grass types
-    Layer 3-5: Herbivore types
-    Layer 6-8: Carnivore types
-    Layer 9: Unused (can be extended for other features)
+Layer 0-2: Grass types
+Layer 3-5: Herbivore types
+Layer 6-8: Carnivore types
+Layer 9: Unused (can be extended for other features)
 
 Initialize grids for hunger tracking for herbivores and carnivores.
 Randomly populate the grid based on initial densities.
