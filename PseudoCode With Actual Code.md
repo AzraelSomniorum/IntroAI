@@ -1,7 +1,60 @@
+```python
+def set_parameters():
+    params = {
+        "grid_size": 100,
+        "steps": 200,
+        "initial_grass1_density": 0.2,
+        "initial_grass2_density": 0.5,
+        "initial_grass3_density": 0.8,
+        "initial_herbivore1_density": 0.1,
+        "initial_herbivore2_density": 0.3,
+        "initial_herbivore3_density": 0.6,
+        "initial_carnivore1_density": 0.1,
+        "initial_carnivore2_density": 0.2,
+        "initial_carnivore3_density": 0.3,
+        "herbivore1_max_hunger": 10,
+        "herbivore2_max_hunger": 15,
+        "herbivore3_max_hunger": 20,
+        "carnivore1_max_hunger": 2,
+        "carnivore2_max_hunger": 3,
+        "carnivore3_max_hunger": 4,
+        "disaster_duration": 5,
+        "disaster_probability": 0.01,
+    }
+    return params
+
+params = set_parameters()
+
+grid_size = params["grid_size"]
+steps = params["steps"]
+initial_grass1_density = params["initial_grass1_density"]
+initial_grass2_density = params["initial_grass2_density"]
+initial_grass3_density = params["initial_grass3_density"]
+
+initial_herbivore1_density = params["initial_herbivore1_density"]
+initial_herbivore2_density = params["initial_herbivore2_density"]
+initial_herbivore3_density = params["initial_herbivore3_density"]
+
+initial_carnivore1_density = params["initial_carnivore1_density"]
+initial_carnivore2_density = params["initial_carnivore2_density"]
+initial_carnivore3_density = params["initial_carnivore3_density"]
+
+herbivore1_max_hunger = params["herbivore1_max_hunger"]
+herbivore2_max_hunger = params["herbivore2_max_hunger"]
+herbivore3_max_hunger = params["herbivore3_max_hunger"]
+
+carnivore1_max_hunger = params["carnivore1_max_hunger"]
+carnivore2_max_hunger = params["carnivore2_max_hunger"]
+carnivore3_max_hunger = params["carnivore3_max_hunger"]
+
+disaster_duration = params["disaster_duration"]
+disaster_probability = params["disaster_probability"]
+```
 Function set_parameters():
     Define all parameters (grid size, initial densities, hunger limits, disaster settings)
     Return parameters as a dictionary
 
+---
 Create a 3D grid with 10 layers, where each layer represents:
     Layer 0-2: Grass types
     Layer 3-5: Herbivore types
@@ -11,7 +64,7 @@ Create a 3D grid with 10 layers, where each layer represents:
 Initialize grids for hunger tracking for herbivores and carnivores.
 Randomly populate the grid based on initial densities.
 
-```Py
+```python
 def count_neighbors(grid, x, y, layer):
     count = 0
     for i in range(x - 1, x + 2):
@@ -22,6 +75,7 @@ def count_neighbors(grid, x, y, layer):
                 count += 1
     return count
 ```
+
 Function count_neighbors(grid, x, y, layer):
     Count the number of neighboring cells in a specific layer that are occupied.
     Skip out-of-bound cells and the current cell itself.
