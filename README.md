@@ -250,6 +250,7 @@ For Example:
 
 ### **5. Visualization and Animation**  
 Using `cmap = mcolors.ListedColormap(...)`, colors are assigned to each type of organism when visualized on a graph.
+
 For Example:
 ```python
 cmap = mcolors.ListedColormap(['white', 'yellow','green','blue', 'purple','orange','pink', 'red', 'cyan', 'brown'])
@@ -258,6 +259,7 @@ cmap = mcolors.ListedColormap(['white', 'yellow','green','blue', 'purple','orang
 The ecosystem is visualized using two plots:
 - Grid Display (ax1): Shows the ecosystem in real-time.
 - Population Graph (ax2): Tracks organism populations over time.
+
 For Example:
 ```python
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
@@ -273,6 +275,7 @@ plant1_counts, plant2_counts, plant3_counts, herbivore1_counts, herbivore2_count
 #### Visualization of Movement (ax1)  
 The `draw(grid)` function visualizes the movement of organisms within the grid.  
 Organisms in the 9th layer (`grid[:, :, 8]`) represent the most predatory carnivores, while the 0th layer (`grid[:, :, 0]`) represents the first layer of plants.  
+
 For Example:
 ```python
 def draw(grid):
@@ -308,6 +311,7 @@ The `plant1_counts` list is updated using the `append` method:
 plant1_counts.append(np.sum(grid[:, :, 0]))
 ```
 This appends the total count of "plants (1)" in `grid[:, :, 0]` at each step to the list, enabling the visualization of population changes over time.
+
 For Example:
 ```python
 def animate(frame):
@@ -349,7 +353,7 @@ def animate(frame):
 ```
 This algorithm leverages the `append` method to record the total number of "plants (1)" in `plant1_counts` at each step, enabling the graph (ax2) to visualize population trends. Meanwhile, the movement of organisms within the grid is animated in real time in ax1.
 
-
+---
 #### **Animation Execution**
 ```python
 ani = animation.FuncAnimation(fig, animate, frames=steps, interval=200)
