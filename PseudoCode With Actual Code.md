@@ -53,7 +53,7 @@ disaster_probability = params["disaster_probability"]
 
 Function set_parameters():
 Define all parameters (grid size, initial densities, hunger limits, disaster settings)
-Return parameters as a dictionary
+Return parameters as a dictionary!
 
 ---
 ```python
