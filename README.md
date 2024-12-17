@@ -1,6 +1,5 @@
 This program creates an experimental environment for ecosystems, allowing for easy modification of initial populations, characteristics of organisms, and environmental conditions.  
 The main features include:
-
 1. **Initial Setup**
 2. **Counting Surrounding Organisms**
 3. **Random Movement**
@@ -38,6 +37,7 @@ def set_parameters():
     }
     return params
 ```
+
 Once the parameters are defined using the set_parameters() function, they are extracted into individual variables for easier access throughout the program.
 For Example:
 ```python
@@ -69,12 +69,14 @@ disaster_duration = params["disaster_duration"]
 disaster_probability = params["disaster_probability"]
 ```
 
+---
 hahahaha
 For Example:
 ```python
 grid = np.zeros((grid_size, grid_size, 10), dtype=int)
 ```
 
+##**Hunger Tracking**
 Separate 2D hunger grids are initialized to track the hunger levels of herbivores and carnivores. These grids are the same size as the simulation grid (grid_size x grid_size) but only hold hunger values:
 - If a carnivore/herbivore eats food, its hunger resets to 0.
 - If it does not eat within its hunger limit, it dies.
@@ -90,6 +92,7 @@ carnivore2_hunger = np.zeros((grid_size, grid_size), dtype=int)
 carnivore3_hunger = np.zeros((grid_size, grid_size), dtype=int)
 ```
 
+##**Disaster Counter**
 The disaster_counter tracks the duration of natural disasters (e.g., fires or droughts) that temporarily prevent grass from growing. Initially, no disaster is active, so it starts at 0.
 - If a disaster occurs, disaster_counter is set to the disaster duration and decreases step-by-step until the disaster ends.
 For Example:
@@ -97,6 +100,7 @@ For Example:
 disaster_counter = 0
 ```
 
+---
 ##**Grid Initialization**  
 For example:  
 ```python
