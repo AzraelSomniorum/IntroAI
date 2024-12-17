@@ -126,7 +126,7 @@ Layer 6-8 : Carnivores
 ---
 
 ### **2. Counting Surrounding Organisms**  
-This step counts the number of organisms around a target organism, placed at the center (e.g., at `(0, 0)`).  
+This step counts the number of neighboring organisms around a target organism, placed at the center (e.g., at `(0, 0)`).  
 Using a **`for` loop**, the algorithm calculates the total number of organisms within the range `(x-1, x, x+1)` and `(y-1, y, y+1)` (a 3x3 grid).  
 
 The center organism `(0, 0)` and positions outside the grid boundaries are excluded from the count:
@@ -135,20 +135,34 @@ if (i == x and j == y) or i < 0 or j < 0 or i >= grid_size or j >= grid_size:
     continue
 ```
 
+For Example:
+```python
+def count_neighbors(grid, x, y, layer):
+    count = 0
+    for i in range(x - 1, x + 2):
+        for j in range(y - 1, y + 2):
+            if (i == x and j == y) or i < 0 or j < 0 or i >= grid_size or j >= grid_size:
+                continue
+            if grid[i, j, layer] == 1:
+                count += 1
+    return count
+```
+
 ---
 
 ### **3. Random Movement**  
-Organisms can move randomly in one of four directions: up, down, left, or right, centered on `(0, 0)`.  
+Organisms (herbivores & carnivores) can move randomly in one of four directions (adjacent of the cell): up, down, left, or right, centered on `(0, 0)`.
+A direction is randomly chosen, and movement occurs if the target cell is empty.
+
+This shuffles the movement directions randomly:
 ```python
 move_directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 np.random.shuffle(move_directions)
 ```
-This shuffles the movement directions randomly.
 
 The new position `(new_x, new_y)` is set as follows:  
 - If the target position is occupied by another organism, the movement fails.  
 - If the position is empty, the organism moves.
-
 ```python
 for move in move_directions:
     new_x = (x + move[0]) % grid_size
