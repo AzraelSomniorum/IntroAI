@@ -1,15 +1,15 @@
 This program creates an experimental environment for ecosystems, allowing for easy modification of initial populations, characteristics of organisms, and environmental conditions.  
 The main features include:
-1. **initial setup**
-2. **counting surrounding organisms**
-3. **random movement**
-4. **organism behavior rules**
-5. **animation**
+1. **Initial Setup**
+2. **Counting Surrounding Organisms**
+3. **Random Movement**
+4. **Organism Behavior Rules**
+5. **Real-time Animation and Population Tracking**
 
 ---
 
 ### **1. Initial Setup**  
-In the initial setup, the grid size (the area where each organism resides), the number of steps (the number of actions organisms take), the initial populations of plants, herbivores, and carnivores, the hunger period for each, and the probability of disasters are defined.  
+In the initial setup, it defines key parameters such as: grid size (the size of the area/environment where each organism resides), the number of steps (the number of actions organisms take), the initial populations of plants, herbivores, and carnivores, the hunger period for each, and the probability of disasters.  
 For example:  
 ```python
 grid[:, :, 0] = np.random.choice(
