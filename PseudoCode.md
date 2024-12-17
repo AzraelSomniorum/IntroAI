@@ -1,3 +1,4 @@
+```
 Define set_parameters():
     Initialize grid_size, steps, densities, hunger thresholds, and disaster parameters
     Return all parameters
@@ -73,7 +74,7 @@ Main program:
     Create grid and hunger arrays
     Populate grid with initial grass, herbivores, and carnivores
     Run animation for defined steps
-
+```
 -----------------------------------------------
 ----------------------------------------------
 
