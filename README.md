@@ -1,5 +1,10 @@
 This program creates an experimental environment for ecosystems, allowing for easy modification of initial populations, characteristics of organisms, and environmental conditions.  
-The main features include **initial setup**, **counting surrounding organisms**, **random movement**, **organism behavior rules**, and **animation**.
+The main features include:
+1. **initial setup**
+2. **counting surrounding organisms**
+3. **random movement**
+4. **organism behavior rules**
+5. **animation**
 
 ---
 
