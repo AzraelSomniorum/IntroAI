@@ -37,7 +37,6 @@ def set_parameters():
     return params
 ```
 
-
 Once the parameters are defined using the set_parameters() function, they are extracted into individual variables for easier access throughout the program.
 
 ```python
@@ -108,6 +107,7 @@ disaster_counter = 0
 ---
 #### **Grid Initialization**  
 
+For Example:
 ```python
 grid[:, :, 0] = np.random.choice(
     [0, 1], p=[1 - initial_grass1_density, initial_grass1_density], size=(grid_size, grid_size)
@@ -176,6 +176,23 @@ for move in move_directions:
 return x, y 
 ```
 
+
+Full Algorithm:
+```python
+def random_move(grid, x, y, layer):
+    move_directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    np.random.shuffle(move_directions)
+
+    for move in move_directions:
+        new_x = (x + move[0]) % grid_size
+        new_y = (y + move[1]) % grid_size
+
+        if grid[new_x, new_y, layer] == 0 and grid[new_x, new_y, 0] == 0:
+            grid[new_x, new_y, layer] = 1
+            grid[x, y, layer] = 0
+            return new_x, new_y
+    return x, y
+```
 ---
 
 ### **4. Organism Behavior Rules**  
@@ -239,43 +256,42 @@ For Example:
 ```
 
 Update the current state:
-For Example:
 ```python
     return new_grid, new_herbivore1_hunger, new_carnivore1_hunger, new_herbivore2_hunger, new_carnivore2_hunger, new_herbivore3_hunger, new_carnivore3_hunger, disaster_counter
 ```
-
 
 ---
 
 ### **5. Visualization and Animation**  
 Using `cmap = mcolors.ListedColormap(...)`, colors are assigned to each type of organism when visualized on a graph.
 
-For Example:
+Full Algorithm:
 ```python
 cmap = mcolors.ListedColormap(['white', 'yellow','green','blue', 'purple','orange','pink', 'red', 'cyan', 'brown'])
 ```
 
-The ecosystem is visualized using two plots:
-- Grid Display (ax1): Shows the ecosystem in real-time.
-- Population Graph (ax2): Tracks organism populations over time.
+---
+The ecosystem is **visualized using two plots**:
+- **Grid Display (ax1)**: Shows the ecosystem in real-time.
+- **Population Graph (ax2)**: Tracks organism populations over time.
 
-For Example:
 ```python
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 ```
 
+---
 #### Data Tracking
 To graph the population counts over time, the following lists are initialized to store organism counts.
-For Example:
 ```python
 plant1_counts, plant2_counts, plant3_counts, herbivore1_counts, herbivore2_counts, herbivore3_counts, carnivore1_counts, carnivore2_counts, carnivore3_counts = [], [], [], [], [], [], [], [], []
 ```
 
-#### Visualization of Movement (ax1)  
+---
+Continuing from how the ecosystem is visualized using two plots,
+### **5.1 Visualization of Movement (ax1)**  
 The `draw(grid)` function visualizes the movement of organisms within the grid.  
 Organisms in the 9th layer (`grid[:, :, 8]`) represent the most predatory carnivores, while the 0th layer (`grid[:, :, 0]`) represents the first layer of plants.  
 
-For Example:
 ```python
 def draw(grid):
     display_grid = np.zeros((grid_size, grid_size))
@@ -304,14 +320,13 @@ def draw(grid):
     ax1.set_title("Ecosystem Simulation")
 ```
 
-#### Population Tracking (ax2)  
+#### **5.2 Population Tracking (ax2)**  
 The `plant1_counts` list is updated using the `append` method:  
 ```python
 plant1_counts.append(np.sum(grid[:, :, 0]))
 ```
 This appends the total count of "plants (1)" in `grid[:, :, 0]` at each step to the list, enabling the visualization of population changes over time.
 
-For Example:
 ```python
 def animate(frame):
     global grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter
@@ -353,12 +368,11 @@ def animate(frame):
 This algorithm leverages the `append` method to record the total number of "plants (1)" in `plant1_counts` at each step, enabling the graph (ax2) to visualize population trends. Meanwhile, the movement of organisms within the grid is animated in real time in ax1.
 
 ---
-#### **Animation Execution**
+### **6. Animation Execution**
 ```python
 ani = animation.FuncAnimation(fig, animate, frames=steps, interval=200)
 plt.show()
 ```
-
 
 ---
 
