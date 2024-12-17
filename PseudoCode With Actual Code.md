@@ -50,6 +50,7 @@ carnivore3_max_hunger = params["carnivore3_max_hunger"]
 disaster_duration = params["disaster_duration"]
 disaster_probability = params["disaster_probability"]
 ```
+
 Function set_parameters():
     Define all parameters (grid size, initial densities, hunger limits, disaster settings)
     Return parameters as a dictionary
@@ -95,6 +96,7 @@ grid[:, :, 8] = np.random.choice(
     [0, 1], p=[1 - initial_carnivore3_density, initial_carnivore3_density], size=(grid_size, grid_size)
 )
 ```
+
 Create a 3D grid with 10 layers, where each layer represents:
     Layer 0-2: Grass types
     Layer 3-5: Herbivore types
@@ -330,25 +332,27 @@ Function update(grid, hunger_grids, disaster_counter):
 
     return new_grid, new_herbivore1_hunger, new_carnivore1_hunger, new_herbivore2_hunger, new_carnivore2_hunger, new_herbivore3_hunger, new_carnivore3_hunger, disaster_counter
 ```
+Function update(grid, hunger_grids, disaster_counter):
+    If a random disaster occurs:
+        Set disaster_counter to its duration.  
     For each grid cell (i, j):
         Update plants (layers 0-2):
             - Plants die if herbivores are nearby.
             - Regenerate plants under certain conditions (e.g., 3 neighbors).
-
         Update herbivores (layers 3-5):
             - Move randomly.
             - If grass is nearby, eat grass and reset hunger.
             - If hunger exceeds a limit, the herbivore dies.
             - Reproduce under specific neighbor conditions.
-
         Update carnivores (layers 6-8):
             - Move randomly.
             - If herbivores are nearby, eat herbivores and reset hunger.
             - If hunger exceeds a limit, the carnivore dies.
             - Reproduce under specific neighbor conditions.
-
     Return updated grid, hunger grids, and disaster counter.
+
 ---
+
 ```python
 cmap = mcolors.ListedColormap(['white', 'yellow','green','blue', 'purple','orange','pink', 'red', 'cyan', 'brown'])
 
