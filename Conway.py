@@ -334,9 +334,7 @@ def draw(grid):
 # Enhanced animation update function
 def animate(frame):
     global grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter
-    grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter = update(
-        grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter
-    )
+    grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter = update(grid, herbivore1_hunger, carnivore1_hunger, herbivore2_hunger, carnivore2_hunger, herbivore3_hunger, carnivore3_hunger, disaster_counter)
 
     # Track population counts
     plant1_counts.append(np.sum(grid[:, :, 0]))
